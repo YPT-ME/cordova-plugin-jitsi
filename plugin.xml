@@ -30,7 +30,8 @@
 			android:launchMode="singleTask"
 			android:resizeableActivity="true"
 			android:supportsPictureInPicture="true"
-			android:windowSoftInputMode="adjustResize">
+			android:windowSoftInputMode="adjustResize"
+			android:exported="true">
 		    </activity>
 		</config-file>
 		<source-file src='src/android/JitsiPlugin.java' target-dir='src/com/cordova/plugin/jitsi/' />
