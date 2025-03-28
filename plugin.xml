@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id='cordova-plugin-jitsi' version='1.0.2' xmlns='http://apache.org/cordova/ns/plugins/1.0' xmlns:android='http://schemas.android.com/apk/res/android'>
+<plugin id='cordova-plugin-jitsi' version='1.0.2'
+	xmlns='http://apache.org/cordova/ns/plugins/1.0'
+	xmlns:android='http://schemas.android.com/apk/res/android'>
 	<name>JitsiPlugin</name>
 	<js-module name='JitsiPlugin' src='www/JitsiPlugin.js'>
 		<clobbers target='jitsiplugin' />
@@ -24,39 +26,33 @@
 			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
-		    <activity
-			android:name="com.cordova.plugin.jitsi.JitsiMeetPluginActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
-			android:launchMode="singleTask"
-			android:resizeableActivity="true"
-			android:supportsPictureInPicture="true"
-			android:windowSoftInputMode="adjustResize"
-			android:exported="true">
-		    </activity>
+			<activity android:name="com.cordova.plugin.jitsi.JitsiMeetPluginActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:launchMode="singleTask" android:resizeableActivity="true" android:supportsPictureInPicture="true" android:windowSoftInputMode="adjustResize" android:exported="true">
+			</activity>
+			<service android:name="org.jitsi.meet.sdk.ConnectionService" android:exported="false" />
 		</config-file>
 		<source-file src='src/android/JitsiPlugin.java' target-dir='src/com/cordova/plugin/jitsi/' />
-    <source-file src='src/android/JitsiPluginModel.java' target-dir='src/com/cordova/plugin/jitsi/' />
-    <source-file src='src/android/JitsiMeetPluginActivity.java' target-dir='src/com/cordova/plugin/jitsi/' />
+		<source-file src='src/android/JitsiPluginModel.java' target-dir='src/com/cordova/plugin/jitsi/' />
+		<source-file src='src/android/JitsiMeetPluginActivity.java' target-dir='src/com/cordova/plugin/jitsi/' />
 		<framework src='src/android/jitsiplugin.gradle' custom='true' type='gradleReference' />
 	</platform>
 
 	<!-- ios -->
-    <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature name="JitsiPlugin">
-                <param name="ios-package" value="JitsiPlugin"/>
-            </feature>
-        </config-file>
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="JitsiPlugin">
+				<param name="ios-package" value="JitsiPlugin"/>
+			</feature>
+		</config-file>
 
-	<header-file src="src/ios/JitsiMeetView.h" />
-	<header-file src="src/ios/JitsiMeetViewDelegate.h" />
-        <header-file src="src/ios/JitsiPlugin.h" />
-        <source-file src="src/ios/JitsiPlugin.mm" />
+		<header-file src="src/ios/JitsiMeetView.h" />
+		<header-file src="src/ios/JitsiMeetViewDelegate.h" />
+		<header-file src="src/ios/JitsiPlugin.h" />
+		<source-file src="src/ios/JitsiPlugin.mm" />
 
-        <source-file src="./framework/JitsiMeet.framework" target-dir="lib" framework="true" />
-	<source-file src="./framework/WebRTC.framework"    target-dir="lib" framework="true" />
-	<framework src="./framework/JitsiMeet.framework" custom="true" embed="true" />
-	<framework src="./framework/WebRTC.framework"    custom="true" embed="true" />
+		<source-file src="./framework/JitsiMeet.framework" target-dir="lib" framework="true" />
+		<source-file src="./framework/WebRTC.framework" target-dir="lib" framework="true" />
+		<framework src="./framework/JitsiMeet.framework" custom="true" embed="true" />
+		<framework src="./framework/WebRTC.framework" custom="true" embed="true" />
 
-    </platform>
+	</platform>
 </plugin>
